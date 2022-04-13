@@ -1,10 +1,46 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title></title>
-</head>
-<body>
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block head_block %}
+    <title xmlns="http://www.w3.org/1999/html">Participants</title>
+{% endblock %}
+
+{% block body_block %}
+    <h1>Welcome to the Participants list!</h1>
+    <hr>
+    <p>DOC ~ There are 3 models:</p>
+    <br>
+    <ol>
+        <li>Human (name)</li>
+        <li>Social (human - f.k Human, social_name, url)</li>
+        <li>AccessRecord (name - f.k Social, date)</li>
+    </ol>
+    <hr>
+    {% if participants %}
+        <div class="row mb-3">
+            <div class="col text-center">
+                <h3>Full name</h3>
+            </div>
+            <div class="col text-center">
+                <h3>Nickname</h3>
+            </div>
+            <div class="col text-center">
+                <h3>URL</h3>
+            </div>
+            <div class="col text-center">
+                <h3>Date</h3>
+            </div>
+        </div>
+        {% for pers in participants %}
+            <div class="row justify-content-around">
+                <div class="col col-border"><p>{{ pers.name.human }}</p></div>
+                <div class="col col-border"><p>{{ pers.name.social_name }}</p></div>
+                <div class="col col-border"><a href="{{ pers.name.url }}">{{ pers.name.url }}</a></div>
+                <div class="col col-border text-end"><p>{{ pers.date }}</p></div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No Participants now :(</p>
+    {% endif %}
+{% endblock %}

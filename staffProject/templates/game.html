@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_block %}
+    <link rel="stylesheet" href="{% static 'styles/game.css' %}">
+    <title>Connect Four</title>
+{% endblock %}
+
+{% block body_block %}
+    <h1>Welcome to Connect Four!</h1>
+    <h2 class="mb-3 text-center">The object of this game is to connect four of your chips in a row!</h2>
+    <h3>Let's get started!</h3>
+    <div class="d-flex justify-content-center tab">
+        <table class="board">
+        {% for foo in i|rjust:6 %}
+            <tr>
+              <td><button type="button"></button></td>
+              <td><button type="button"></button></td>
+              <td><button type="button"></button></td>
+              <td><button type="button"></button></td>
+              <td><button type="button"></button></td>
+              <td><button type="button"></button></td>
+              <td><button type="button"></button></td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+
+{% block scripts_block %}
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src={% static 'scripts/index.js' %}></script>
+{% endblock %}
