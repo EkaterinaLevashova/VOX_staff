@@ -17,6 +17,12 @@
         <li>AccessRecord (name - f.k Social, date)</li>
     </ol>
     <hr>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+    <hr>
     {% if participants %}
         <div class="row mb-3">
             <div class="col text-center">

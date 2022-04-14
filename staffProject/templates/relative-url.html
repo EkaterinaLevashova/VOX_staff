@@ -7,8 +7,31 @@
 
 {% block body_block %}
     <h1>Welcome to the relative page!</h1>
-    {{ text }}
-    {{ number }}
+    <hr>
+    <h2>DJANGO FILTERS</h2>
+    <h3>Text without filter --> <code>{{ text }}</code> </h3>
+    <h3>Text with uppercase filter --> <code>{{ text|upper }}</code></h3>
+    <h3>Text with cut arguments filter --> <code>{{ text|cut:"or" }}</code></h3>
+    <p>Number with +(math) Filter --> <code>{{ number|add:"99"}}</code></p>
+    <hr>
+    <h2>SOME FORM</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="row">
+                {{ field.label_tag }}
+                <div class="col-md-5">
+                    {{ field }}
+                </div>
+            </div>
+        {% endfor %}
+
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+    <p>There are hidden input:</p>
+    <code>&ltinput type="hidden" name="botcatcher" id="id_botcatcher"&gt</code>
+
 {% endblock %}
 
 

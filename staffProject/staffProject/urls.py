@@ -8,4 +8,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
     path('staffApp/', include('staffApp.urls')),
+    path("__reload__/", include("django_browser_reload.urls")),
 ]
