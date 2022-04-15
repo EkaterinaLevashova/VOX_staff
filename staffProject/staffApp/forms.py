@@ -1,9 +1,26 @@
 from django import forms
 from django.core import validators
 from staffApp.models import MetaUser
+from staffApp.models import UserProfileInfo
+from django.contrib.auth.models import User
+
+
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password')
+
+
+class UserProfileInfoForm(forms.ModelForm):
+    class Meta:
+        model = UserProfileInfo
+        fields = ('portfolio_site', 'profile_pic')
 
 
 class NewParticipantForm(forms.ModelForm):
+    """INDEX.HTML FORM"""
     class Meta:
         model = MetaUser
         fields = '__all__'
@@ -19,13 +36,8 @@ class NewParticipantForm(forms.ModelForm):
         }
 
 
-# def check_for_z(value):
-#    if value[0].lower() == "z":
-#        raise forms.ValidationError("!!!KAZAP DETECTED!!!")
-# class FormName(forms.Form):
-#    name = forms.CharField(validators=[check_for_z])
-
 class FormName(forms.Form):
+    """RELATIVE.HTML FORM"""
     name = forms.CharField(widget=forms.TextInput(attrs={'class': "myField"}))
     email = forms.EmailField(widget=forms.TextInput(attrs={'class': "myField"}))
     verify_email = forms.EmailField(widget=forms.TextInput(attrs={'class': "myField",
@@ -40,11 +52,3 @@ class FormName(forms.Form):
         if email != vmail:
             print("Make SURE Emails MATCH")
             raise forms.ValidationError("Make SURE Emails MATCH")
-
-#    def clean_botcatcher(self):
-#        botcatcher = self.cleaned_data['botcatcher']
-#        if len(botcatcher):
-#           raise forms.ValidationError("GOTCHA BOT!")
-#        return botcatcher
-#
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   validators=[validators.MaxLengthValidator(0)]

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_block %}
+    <title>Login</title>
+{% endblock %}
+
+{% block body_block %}
+    <h1>Please login!</h1>
+    <form action="{% url 'staffApp:user_login' %}" method="post">
+        {% csrf_token %}
+
+        <label>
+            Username:
+            <input type="text" name="username" placeholder="Enter Username">
+        </label>
+
+        <label>
+            Password:
+            <input type="password" name="password">
+        </label>
+
+        <input type="submit" value="Login">
+
+    </form>
+{% endblock %}

@@ -1,6 +1,17 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
+class UserProfileInfo(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    portfolio_site = models.URLField(blank=True)
+    profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+
+# MODELS FOR INDEX.HTML TABLE
 class Human(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
@@ -25,6 +36,7 @@ class AccessRecord(models.Model):
         return str(self.date)
 
 
+# MODELS FOR INDEX.HTML FORM
 class MetaUser(models.Model):
     """Need for models form example: name, email"""
     name = models.CharField(max_length=100)
