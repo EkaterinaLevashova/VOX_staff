@@ -10,5 +10,5 @@ urlpatterns = [
     path('staffApp/', include('staffApp.urls')),
     path('logout/', views.user_logout, name='logout'),
     path('special/', views.special, name='special'),
-    path("__reload__/", include("django_browser_reload.urls")),
+    # path("__reload__/", include("django_browser_reload.urls")),
 ]
