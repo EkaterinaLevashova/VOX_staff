@@ -1,0 +1,28 @@
+body {
+    font-family: monospace;
+    font-size: 20px;
+}
+body::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+h1 {
+    margin-bottom: 40px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.col-border {
+    border-right: 2px solid #c9c9c9
+}
+.col-border:last-child {
+    border-right: none;
+}
+.myField {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 50px;
+    width: 100%;
+    margin: 10px 10px 10px 0;
+}
+.error {
+    color: red;
+}

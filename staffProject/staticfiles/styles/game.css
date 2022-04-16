@@ -1,0 +1,11 @@
+.board button {
+    width: 100px;
+    height: 100px;
+    background-color: #d1d1d1;
+    margin: 5px;
+    box-shadow: 0 0 19px -1px rgba(122,122,122,0.75);
+    border-radius: 50%;
+}
+.board button:hover {
+    background-color: #ebebeb;
+}
